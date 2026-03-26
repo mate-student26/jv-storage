@@ -16,6 +16,10 @@ public class StorageImpl<K, V> implements Storage<K, V> {
 
     @Override
     public void put(K key, V value) {
+        if (key == null || value == null) {
+            throw new NullPointerException("Key or value cannot be null.");
+        }
+
         for (int i = 0; i < size; i++) {
             if (keys[i] == key) {
                 values[i] = value;
